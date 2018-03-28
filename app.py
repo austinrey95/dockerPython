@@ -5,6 +5,10 @@ from slackclient import SlackClient
 from flask import Flask, request, Response
 import json
 import requests
+from redis import Redis, RedisError
+import os
+import socket
+redis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)
 app = Flask(__name__)
 
 # instantiate Slack client
@@ -86,4 +90,4 @@ def prime(num):
         return Response(json.dumps(nope)), 200        
             
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port=80)
