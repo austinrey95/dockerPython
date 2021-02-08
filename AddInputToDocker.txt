@@ -1,0 +1,2 @@
+docker build -t [name] .
+docker run -a stdin -a stdout -i -t [name of api]
